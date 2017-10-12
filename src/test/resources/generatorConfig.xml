@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <properties resource="generation.properties"/>
+
+    <!-- 一个数据库一个context，使用自定义的Mybatis生成器 -->
+    <context id="mainContext" defaultModelType="flat" targetRuntime="com.sealinetech.tools.SealineMybatis3Impl">
+
+        <!-- 注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
+            <property name="suppressDate" value="true"/> <!-- 是否生成注释代时间戳-->
+        </commentGenerator>
+
+        <!-- jdbc连接 -->
+        <jdbcConnection driverClass="${jdbc.driver}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.user}"
+                        password="${jdbc.password}"/>
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成实体类地址 -->
+        <javaModelGenerator targetPackage="${package.pojo}"
+                            targetProject="src/main/java">
+            <!-- 是否在当前路径下新加一层schema,eg：false路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
+            <property name="trimStrings" value="true"/>
+            <!--所有的表都有ID字段，所以所有的表都从该类继承-->
+            <property name="rootClass" value="${class.basePojo}"/>
+        </javaModelGenerator>
+
+        <!-- 生成mapxml文件 -->
+        <sqlMapGenerator targetPackage="mapper"
+
+                         targetProject="src/main/resources">
+            <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- 生成mapxml对应client，也就是接口dao -->
+        <javaClientGenerator targetPackage="${package.dao}"
+                             targetProject="src/main/java" type="XMLMAPPER">
+            <!-- 是否在当前路径下新加一层schema,eg：false路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--配置表信息，不生成示例程序 -->
+        <table tableName="${generator.tableName}" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <!--设置以下标签可以进行表名映射-->
+            <!--<property name="runtimeTableName" value="material_card_info"/>-->
+
+            <!--设置以下标签可以进行列名映射-->
+            <!--<columnOverride column="原材料ID" property="materialID"/>-->
+            <!--<columnOverride column="卡号" property="cardNo"/>-->
+            <!--<columnOverride column="料仓ID" property="storageID"/>-->
+            <!--<columnOverride column="车号ID" property="carID"/>-->
+            <!--<columnOverride column="运输单位ID" property="transportUnitID"/>-->
+            <!--<columnOverride column="供应商ID" property="supplierID"/>-->
+            <!--<columnOverride column="最后使用时间" property="lastTime"/>-->
+
+            <!--如果不想生成所有字段，且需要使用黑名单，设置以下正规表达式-->
+            <!--<ignoreColumn column="制卡时间"/>-->
+            <!--<ignoreColumn column="制卡人"/>-->
+            <!--<ignoreColumn column="备注"/>-->
+
+            <!--如果不想生成所有字段，且需要使用白名单，设置以下正规表达式-->
+            <!--<ignoreColumnsByRegex pattern=".*">-->
+                <!--<except column="ID"/>-->
+                <!--<except column="原材料ID"/>-->
+                <!--<except column="卡号"/>-->
+                <!--<except column="料仓ID"/>-->
+                <!--<except column="车号ID"/>-->
+                <!--<except column="运输单位ID"/>-->
+                <!--<except column="供应商ID"/>-->
+                <!--<except column="最后使用时间"/>-->
+            <!--</ignoreColumnsByRegex>-->
+
+        </table>
+
+    </context>
+</generatorConfiguration>
