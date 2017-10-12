@@ -1,7 +1,11 @@
 package com.sealinetech.dao;
 
 import com.sealinetech.pojo.Customers;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface CustomersDao {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +18,6 @@ public interface CustomersDao {
     int updateByPrimaryKeySelective(Customers record);
 
     int updateByPrimaryKey(Customers record);
+
+    List<Customers> selectAll();
 }
