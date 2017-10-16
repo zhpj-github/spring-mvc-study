@@ -7,6 +7,10 @@ public class Employee extends SealinePojo {
 
     private String note;
 
+    private Integer departmentId;
+
+    private Department department;
+
     public String getName() {
         return name;
     }
@@ -29,5 +33,21 @@ public class Employee extends SealinePojo {
 
     public void setNote(String note) {
         this.note = note == null ? null : note.trim();
+    }
+
+    public Integer getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }

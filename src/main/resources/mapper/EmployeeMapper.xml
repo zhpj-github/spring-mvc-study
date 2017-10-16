@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sealinetech.dao.EmployeeDao">
+  <resultMap id="DepartmentResultMap" type="com.sealinetech.pojo.Department">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    <result column="note" jdbcType="INTEGER" property="note" />
+  </resultMap>
   <resultMap id="BaseResultMap" type="com.sealinetech.pojo.Employee">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="no" jdbcType="VARCHAR" property="no" />
     <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <association property="department" column="department_id" select="getDepartment"/>
   </resultMap>
+  <select id="selectDepartment" parameterType="int" resultMap="DepartmentResultMap">
+    select
+    id, department_name, note
+    from department
+    where id = #{id,jdbcType=INTEGER}
+  </select>
   <sql id="Base_Column_List">
-    id, name, no, note
+    id, name, no, note, department_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -16,20 +29,15 @@
     from employee
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" resultType="com.sealinetech.pojo.Employee">
-    select
-    <include refid="Base_Column_List" />
-    from employee
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from employee
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.sealinetech.pojo.Employee">
     insert into employee (id, name, no, 
-      note)
+      note, department_id)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR}, 
-      #{note,jdbcType=VARCHAR})
+      #{note,jdbcType=VARCHAR}, #{departmentId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.sealinetech.pojo.Employee">
     insert into employee
@@ -46,6 +54,9 @@
       <if test="note != null">
         note,
       </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -59,6 +70,9 @@
       </if>
       <if test="note != null">
         #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -74,6 +88,9 @@
       <if test="note != null">
         note = #{note,jdbcType=VARCHAR},
       </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -81,7 +98,21 @@
     update employee
     set name = #{name,jdbcType=VARCHAR},
       no = #{no,jdbcType=VARCHAR},
-      note = #{note,jdbcType=VARCHAR}
+      note = #{note,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  
+  
+  <select id="selectAll" resultType="com.sealinetech.pojo.Employee">
+    select
+    <include refid="Base_Column_List" />
+    from employee
+  </select>
+  
+  
+  
+  
+  
 </mapper>

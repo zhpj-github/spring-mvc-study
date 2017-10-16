@@ -1,5 +1,6 @@
 package com.sealinetech.dao;
 
+import com.sealinetech.pojo.Department;
 import com.sealinetech.pojo.Employee;
 import org.springframework.stereotype.Repository;
 
@@ -20,4 +21,6 @@ public interface EmployeeDao {
     int updateByPrimaryKey(Employee record);
 
     List<Employee> selectAll();
+
+    Department selectDepartment(int departmentId);
 }
