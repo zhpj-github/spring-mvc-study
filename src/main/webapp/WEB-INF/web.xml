@@ -31,4 +31,13 @@
         <filter-name>hiddenHttpMethodFilter</filter-name>
         <url-pattern>*.do</url-pattern>
     </filter-mapping>
+    <filter>
+        <filter-name>myFilter</filter-name>
+        <filter-class>com.sealinetech.filter.MyFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>myFilter</filter-name>
+        <url-pattern>query.do</url-pattern>
+    </filter-mapping>
+
 </web-app>
