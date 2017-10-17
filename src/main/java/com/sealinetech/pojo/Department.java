@@ -3,7 +3,7 @@ package com.sealinetech.pojo;
 public class Department extends SealinePojo {
     private String departmentName;
 
-    private Integer note;
+    private String note;
 
     public String getDepartmentName() {
         return departmentName;
@@ -13,11 +13,11 @@ public class Department extends SealinePojo {
         this.departmentName = departmentName == null ? null : departmentName.trim();
     }
 
-    public Integer getNote() {
+    public String getNote() {
         return note;
     }
 
-    public void setNote(Integer note) {
+    public void setNote(String note) {
         this.note = note;
     }
 }

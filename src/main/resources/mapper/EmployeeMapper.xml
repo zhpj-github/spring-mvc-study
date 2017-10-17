@@ -3,8 +3,8 @@
 <mapper namespace="com.sealinetech.dao.EmployeeDao">
   <resultMap id="DepartmentResultMap" type="com.sealinetech.pojo.Department">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
-    <result column="note" jdbcType="INTEGER" property="note" />
+    <result column="department_Name" jdbcType="VARCHAR" property="departmentName" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
   </resultMap>
   <resultMap id="BaseResultMap" type="com.sealinetech.pojo.Employee">
     <id column="id" jdbcType="INTEGER" property="id" />
@@ -12,7 +12,7 @@
     <result column="no" jdbcType="VARCHAR" property="no" />
     <result column="note" jdbcType="VARCHAR" property="note" />
     <result column="department_id" jdbcType="INTEGER" property="departmentId" />
-    <association property="department" column="department_id" select="getDepartment"/>
+    <association property="department" column="department_id" select="selectDepartment"/>
   </resultMap>
   <select id="selectDepartment" parameterType="int" resultMap="DepartmentResultMap">
     select
@@ -105,7 +105,7 @@
   
   
   
-  <select id="selectAll" resultType="com.sealinetech.pojo.Employee">
+  <select id="selectAll" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from employee
