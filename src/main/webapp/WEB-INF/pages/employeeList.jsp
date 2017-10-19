@@ -10,10 +10,10 @@
 <html>
 <head>
     <title>用户列表</title>
-    <script type="application/javascript" src="/status/js/jquery-3.1.1.js"></script>
-    <script type="application/javascript" src="/status/js/bootstrap.js"></script>
-    <link rel="stylesheet" type="text/css" href="/status/css/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="/status/css/bootstrap-theme.css"/>
+    <script type="application/javascript" src="/static/js/jquery-3.1.1.js"></script>
+    <script type="application/javascript" src="/static/bootstrap-3.3.7/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7/css/bootstrap-theme.css"/>
     <script>
         $(function () {
             /*
