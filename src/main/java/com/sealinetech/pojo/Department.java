@@ -5,6 +5,14 @@ public class Department extends SealinePojo {
 
     private String note;
 
+    public Department() {
+    }
+
+    public Department(String departmentName, String note) {
+        this.departmentName = departmentName;
+        this.note = note;
+    }
+
     public String getDepartmentName() {
         return departmentName;
     }

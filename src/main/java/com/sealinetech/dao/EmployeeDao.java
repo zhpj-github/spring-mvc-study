@@ -5,7 +5,6 @@ import com.sealinetech.pojo.Employee;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
 @Repository
 public interface EmployeeDao {
     int deleteByPrimaryKey(Integer id);

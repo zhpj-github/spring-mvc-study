@@ -4,7 +4,7 @@ import com.sealinetech.pojo.Department;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-@Repository
+
 public interface DepartmentDao {
     int deleteByPrimaryKey(Integer id);
 

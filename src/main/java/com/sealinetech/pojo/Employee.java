@@ -11,6 +11,16 @@ public class Employee extends SealinePojo {
 
     private Department department;
 
+    public Employee() {
+    }
+
+    public Employee(String name, String no, String note, Integer departmentId) {
+        this.name = name;
+        this.no = no;
+        this.note = note;
+        this.departmentId = departmentId;
+    }
+
     public String getName() {
         return name;
     }
