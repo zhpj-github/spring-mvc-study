@@ -1,4 +1,4 @@
-package com.sealinetech.dao;
+package com.sealinetech.pojo;
 
 
 import java.util.HashMap;

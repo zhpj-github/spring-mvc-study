@@ -2,12 +2,15 @@ package com.sealinetech.dao;
 
 import com.sealinetech.pojo.Department;
 import com.sealinetech.pojo.Employee;
+import com.sealinetech.pojo.EmployeeExample;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
 public interface EmployeeDao {
     int deleteByPrimaryKey(Integer id);
+
+    int deleteByExample(EmployeeExample employeeExample);
 
     int insert(Employee record);
 

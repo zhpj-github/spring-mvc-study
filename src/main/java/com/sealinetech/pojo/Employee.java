@@ -1,8 +1,11 @@
 package com.sealinetech.pojo;
 
+import javax.validation.constraints.Pattern;
+
 public class Employee extends SealinePojo {
     private String name;
 
+    @Pattern(regexp="^[a-zA-Z0-9_-]{6,16}$",message="编号非法")
     private String no;
 
     private String note;

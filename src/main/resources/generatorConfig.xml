@@ -18,6 +18,9 @@
 
 
     <plugins>
-        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--保证分页跳转合法-->
+            <property name="reasonable" value="true"/>
+        </plugin>
     </plugins>
 </configuration>

@@ -8,4 +8,16 @@ import java.util.List;
 
 public interface EmployeeService {
     List<Employee> getAllEmployees();
+
+    int saveEmp(Employee employee);
+
+    boolean checkNo(String empNo);
+
+    Employee getEmployee(Integer id);
+
+    int updateEmp(Employee employee);
+
+    int deleteEmp(Integer id);
+
+    int deleteEmpBatch(List<Integer> list);
 }
