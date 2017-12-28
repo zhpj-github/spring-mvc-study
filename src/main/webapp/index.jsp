@@ -116,9 +116,10 @@
                     </li>
                     <li v-for="pageNum in pageInfo.navigatepageNums"
                         v-if="pageNum === pageInfo.pageNum" class="active" >
-                        <a >{{pageNum}}</a></li>
+                        <a :href="'${APP_PATH}/emps?pn='+pageNum">{{pageNum}}</a>
+                    </li>
                     <li v-else @click="select($index)">
-                        <a >{{pageNum}}</a>
+                        <a :href="'${APP_PATH}/emps?pn='+pageNum">{{pageNum}}</a>
                     </li>
 
                     <li v-if="pageInfo.hasNextPage">
